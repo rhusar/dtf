@@ -1,0 +1,1639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<test_selection>
+  <os id="SunOS">
+    <orb id="Orbix">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="true" />
+        <test id="AITTest02" selected="true" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="true" />
+        <test id="ArjunaNesting2" selected="true" />
+        <test id="ArjunaNesting3" selected="true" />
+        <test id="ArjunaNesting4" selected="true" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="true" />
+        <test id="Performance2" selected="true" />
+        <test id="Performance3" selected="true" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="true" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="true" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="true" />
+        <test id="AsyncTest2" selected="true" />
+        <test id="AsyncTest3" selected="true" />
+        <test id="AsyncTest4" selected="true" />
+        <test id="AsyncTest5" selected="true" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="true" />
+        <test id="Current2" selected="true" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="true" />
+        <test id="NestedTester2" selected="true" />
+        <test id="NestedTester3" selected="true" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="true" />
+        <test id="TransactionTest2" selected="true" />
+        <test id="TransactionTest3" selected="true" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="true" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="true" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="true" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="true" />
+        <test id="BasicJDBCTest2" selected="true" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="true" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="true" />
+        <test id="ImplicitArjunaClient" selected="true" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="true" />
+        <test id="Heuristic2" selected="true" />
+        <test id="Heuristic3" selected="true" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="true" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="true" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="true" />
+        <test id="CheckedTransactions" selected="true" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="true" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="true" />
+        <test id="BasicJDBC2Test2" selected="true" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="true" />
+        <test id="HammerTest2" selected="true" />
+        <test id="HammerTest3" selected="true" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="true" />
+        <test id="Timeout2" selected="true" />
+        <test id="Timeout3" selected="true" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="true" />
+        <test id="Hammer2" selected="true" />
+        <test id="Hammer3" selected="true" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="true" />
+      </testGroup>
+    </orb>
+    <orb id="Java">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+    <orb id="Visibroker">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+  </os>
+  <os id="CYGWIN_NT-4.0">
+    <orb id="Orbix">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+    <orb id="Java">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+    <orb id="Visibroker">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+  </os>
+  <os id="Linux">
+    <orb id="Orbix">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="true" />
+        <test id="AITTest02" selected="true" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="true" />
+        <test id="ArjunaNesting2" selected="true" />
+        <test id="ArjunaNesting3" selected="true" />
+        <test id="ArjunaNesting4" selected="true" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="true" />
+        <test id="Performance2" selected="true" />
+        <test id="Performance3" selected="true" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="true" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="true" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="true" />
+        <test id="AsyncTest2" selected="true" />
+        <test id="AsyncTest3" selected="true" />
+        <test id="AsyncTest4" selected="true" />
+        <test id="AsyncTest5" selected="true" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="true" />
+        <test id="Current2" selected="true" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="true" />
+        <test id="NestedTester2" selected="true" />
+        <test id="NestedTester3" selected="true" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="true" />
+        <test id="TransactionTest2" selected="true" />
+        <test id="TransactionTest3" selected="true" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="true" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="true" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="true" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="true" />
+        <test id="BasicJDBCTest2" selected="true" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="true" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="true" />
+        <test id="ImplicitArjunaClient" selected="true" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="true" />
+        <test id="Heuristic2" selected="true" />
+        <test id="Heuristic3" selected="true" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="true" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="true" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="true" />
+        <test id="CheckedTransactions" selected="true" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="true" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="true" />
+        <test id="BasicJDBC2Test2" selected="true" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="true" />
+        <test id="HammerTest2" selected="true" />
+        <test id="HammerTest3" selected="true" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="true" />
+        <test id="Timeout2" selected="true" />
+        <test id="Timeout3" selected="true" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="true" />
+        <test id="Hammer2" selected="true" />
+        <test id="Hammer3" selected="true" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="true" />
+      </testGroup>
+    </orb>
+    <orb id="Java">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+    <orb id="Visibroker">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+  </os>
+  <os id="HP-UX">
+    <orb id="Orbix">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+    <orb id="Java">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+    <orb id="Visibroker">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+  </os>
+  <os id="CYGWIN_NT-5.0">
+    <orb id="Orbix">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="true" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="true" />
+        <test id="AITTest02" selected="true" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="true" />
+        <test id="ArjunaNesting2" selected="true" />
+        <test id="ArjunaNesting3" selected="true" />
+        <test id="ArjunaNesting4" selected="true" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="true" />
+        <test id="Performance2" selected="true" />
+        <test id="Performance3" selected="true" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="true" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="true" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="true" />
+        <test id="AsyncTest2" selected="true" />
+        <test id="AsyncTest3" selected="true" />
+        <test id="AsyncTest4" selected="true" />
+        <test id="AsyncTest5" selected="true" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="true" />
+        <test id="Current2" selected="true" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="true" />
+        <test id="NestedTester2" selected="true" />
+        <test id="NestedTester3" selected="true" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="true" />
+        <test id="TransactionTest2" selected="true" />
+        <test id="TransactionTest3" selected="true" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="true" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="true" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="true" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="true" />
+        <test id="BasicJDBCTest2" selected="true" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="true" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="true" />
+        <test id="ImplicitArjunaClient" selected="true" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="true" />
+        <test id="Heuristic2" selected="true" />
+        <test id="Heuristic3" selected="true" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="true" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="true" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="true" />
+        <test id="CheckedTransactions" selected="true" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="true" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="true" />
+        <test id="BasicJDBC2Test2" selected="true" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="true" />
+        <test id="HammerTest2" selected="true" />
+        <test id="HammerTest3" selected="true" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="true" />
+        <test id="Timeout2" selected="true" />
+        <test id="Timeout3" selected="true" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="true" />
+        <test id="Hammer2" selected="true" />
+        <test id="Hammer3" selected="true" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="true" />
+      </testGroup>
+    </orb>
+    <orb id="Java">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+    <orb id="Visibroker">
+      <testGroup id="DumpRunInformation">
+        <test id="DumpRunInformation" selected="false" />
+      </testGroup>
+      <testGroup id="AITTests">
+        <test id="AITTest01" selected="false" />
+        <test id="AITTest02" selected="false" />
+      </testGroup>
+      <testGroup id="ArjunaNesting">
+        <test id="ArjunaNesting1" selected="false" />
+        <test id="ArjunaNesting2" selected="false" />
+        <test id="ArjunaNesting3" selected="false" />
+        <test id="ArjunaNesting4" selected="false" />
+      </testGroup>
+      <testGroup id="Performance">
+        <test id="Performance1" selected="false" />
+        <test id="Performance2" selected="false" />
+        <test id="Performance3" selected="false" />
+      </testGroup>
+      <testGroup id="ExplicitInterposition">
+        <test id="ExplicitInterClient" selected="false" />
+      </testGroup>
+      <testGroup id="JTA">
+        <test id="JTATest1" selected="false" />
+      </testGroup>
+      <testGroup id="Asynchronous">
+        <test id="AsyncTest1" selected="false" />
+        <test id="AsyncTest2" selected="false" />
+        <test id="AsyncTest3" selected="false" />
+        <test id="AsyncTest4" selected="false" />
+        <test id="AsyncTest5" selected="false" />
+      </testGroup>
+      <testGroup id="Current">
+        <test id="Current" selected="false" />
+        <test id="Current2" selected="false" />
+      </testGroup>
+      <testGroup id="Nested">
+        <test id="NestedTester1" selected="false" />
+        <test id="NestedTester2" selected="false" />
+        <test id="NestedTester3" selected="false" />
+      </testGroup>
+      <testGroup id="Transactions">
+        <test id="TransactionTest1" selected="false" />
+        <test id="TransactionTest2" selected="false" />
+        <test id="TransactionTest3" selected="false" />
+      </testGroup>
+      <testGroup id="JTAHammer">
+        <test id="JTAHammer1" selected="false" />
+      </testGroup>
+      <testGroup id="TransactionServer">
+        <test id="TransactionManager" selected="false" />
+      </testGroup>
+      <testGroup id="Basic">
+        <test id="GridTest01" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC-cloudscape">
+        <test id="BasicJDBCTest1" selected="false" />
+        <test id="BasicJDBCTest2" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-oracle">
+        <test id="OracleTest1" selected="false" />
+      </testGroup>
+      <testGroup id="Arjuna">
+        <test id="ExplicitArjunaClient" selected="false" />
+        <test id="ImplicitArjunaClient" selected="false" />
+      </testGroup>
+      <testGroup id="Heuristics">
+        <test id="Heuristic1" selected="false" />
+        <test id="Heuristic2" selected="false" />
+        <test id="Heuristic3" selected="false" />
+      </testGroup>
+      <testGroup id="Synchronizations">
+        <test id="Synchronization1" selected="false" />
+      </testGroup>
+      <testGroup id="Interposition">
+        <test id="Interposition1" selected="false" />
+      </testGroup>
+      <testGroup id="Checked">
+        <test id="UncheckedTransactions" selected="false" />
+        <test id="CheckedTransactions" selected="false" />
+      </testGroup>
+      <testGroup id="Local">
+        <test id="LocalTest1" selected="false" />
+      </testGroup>
+      <testGroup id="JDBC2-cloudscape">
+        <test id="BasicJDBC2Test1" selected="false" />
+        <test id="BasicJDBC2Test2" selected="false" />
+      </testGroup>
+      <testGroup id="DistributedHammerTests">
+        <test id="HammerTest1" selected="false" />
+        <test id="HammerTest2" selected="false" />
+        <test id="HammerTest3" selected="false" />
+      </testGroup>
+      <testGroup id="Timeout">
+        <test id="Timeout1" selected="false" />
+        <test id="Timeout2" selected="false" />
+        <test id="Timeout3" selected="false" />
+      </testGroup>
+      <testGroup id="Hammer">
+        <test id="Hammer1" selected="false" />
+        <test id="Hammer2" selected="false" />
+        <test id="Hammer3" selected="false" />
+      </testGroup>
+      <testGroup id="Implicit">
+        <test id="Implicit1" selected="false" />
+      </testGroup>
+    </orb>
+  </os>
+</test_selection>
+

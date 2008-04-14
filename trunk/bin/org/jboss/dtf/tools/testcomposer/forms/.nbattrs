@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="JVMParameterForm.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="JVMParameterForm"/>
+    </fileobject>
+    <fileobject name="PerformTaskForm.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="PerformTaskForm"/>
+    </fileobject>
+    <fileobject name="NewTestForm.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="NewTestForm"/>
+    </fileobject>
+    <fileobject name="ParameterForm.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="ParameterForm"/>
+    </fileobject>
+</attributes>
