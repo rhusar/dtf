@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<!ELEMENT action_list (start_task | perform_task | terminate_task | wait_for_task)+>
+<!ELEMENT configuration EMPTY>
+<!ATTLIST configuration
+	names_required CDATA #REQUIRED
+>
+<!ATTLIST default_timeout
+	value CDATA #REQUIRED
+>
+<!ELEMENT default_timeout EMPTY>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT perform_task EMPTY>
+<!ATTLIST perform_task
+	id CDATA #REQUIRED
+	parameters CDATA #IMPLIED
+	jvm_parameters CDATA #IMPLIED
+	name_list CDATA #IMPLIED
+	runtime_id CDATA #IMPLIED
+	location CDATA #IMPLIED
+>
+<!ELEMENT start_task EMPTY>
+<!ATTLIST start_task
+	id CDATA #REQUIRED
+	parameters CDATA #IMPLIED
+	runtime_id CDATA #REQUIRED
+	name_list CDATA #IMPLIED
+	location CDATA #IMPLIED
+	jvm_parameters CDATA #IMPLIED
+>
+<!ELEMENT task EMPTY>
+<!ATTLIST task
+	id CDATA #REQUIRED
+	classname CDATA #REQUIRED
+	runner CDATA #REQUIRED
+	type (expect_pass_fail | expect_ready) #REQUIRED
+	timeout CDATA #IMPLIED
+>
+<!ELEMENT task_declaration (task+)>
+<!ELEMENT wait_for_task EMPTY>
+<!ELEMENT terminate_task EMPTY>
+<!ATTLIST wait_for_task
+	runtime_id CDATA #REQUIRED
+>
+<!ATTLIST terminate_task
+	runtime_id CDATA #REQUIRED
+>
+<!ELEMENT test_declaration (description, configuration?, action_list)>
+<!ATTLIST test_declaration
+	id CDATA #REQUIRED
+	descriptive_name CDATA #REQUIRED
+	author CDATA #REQUIRED
+>
+<!ELEMENT test_group (task_declaration, test_declaration+)>
+<!ATTLIST test_group
+	name CDATA #REQUIRED
+>
+<!ELEMENT test_set (default_timeout, description, test_group+)>

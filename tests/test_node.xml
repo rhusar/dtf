@@ -1,0 +1,70 @@
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<service_manager>
+	<service name="TestNode" class="org.jboss.dtf.testframework.testnode.TestNode" timeout="45">
+
+		<classpath>
+			<!-- TestNode needs access to Framework classes -->
+			<directory name="."/>
+			<jar name="../lib/TestingFramework.jar"/>
+
+			<!-- TestNode needs to parse XML descriptors -->
+			<jar name="../lib/ext/jdom.jar"/>
+			<jar name="../lib/ext/xerces.jar"/>
+
+			<!-- TestNode needs to execute ant installer scripts -->
+			<jar name="../lib/ext/ant.jar"/>
+			<jar name="../lib/ext/ant-launcher.jar"/>
+		</classpath>
+
+		<parameters>
+			<!-- NameService is required to locate other elements of the Framework -->
+			<param>//localhost:1099/NameService</param>
+
+			<!-- IP address of ResultsCollator service -->
+			<param>localhost</param>
+
+			<!--
+			  These elements need to be checked out
+			<param>-URL</param>
+			<param>http://bob101:8080/nodeconfig-win2k.xml</param>
+			<param>-name</param>
+			<param>bob101_node</param>
+			-->
+		</parameters>
+
+		<settings>
+			<!-- JVM settings for remote debugging
+			<setting>-Xdebug</setting>
+			<setting>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=1045</setting>
+			-->
+		</settings>
+
+		<properties>
+			<!-- TestNodes use WebLoggingService to log test results to the DTF database -->
+		    <property name="org.jboss.dtf.testframework.utils.logging.plugins.WebLoggingServicePlugin.URL"
+	                  value="http://localhost:8080/dtf/"/>
+
+			<!-- set the RMI port number (default is 1099) -->
+			<property name="rmi.port" value="1099"/>
+		</properties>
+	</service>
+</service_manager>

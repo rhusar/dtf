@@ -1,0 +1,118 @@
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<project name="DTF Tests" default="testNameService" basedir=".">
+
+	<!-- set global properties for this build -->
+	<property name="lib" value="../lib"/>
+
+	<!-- properties for ant tasks -->
+	<property name="distribution.list" value="richard.achmatowicz@jboss.com"/>
+	<property name="nameservice.uri" value="//localhost:1099/NameService"/>
+	<property name="software.version" value="TestVersion"/>
+
+	<!-- ant task definitions -->
+	<taskdef name="schedule"
+			classname="org.jboss.dtf.tools.scheduletask.ScheduleTask"
+			classpath="${lib}/DTFTools.jar;${lib/TestingFramework.jar}"/>
+
+	<taskdef name="assigninstaller"
+			classname="org.jboss.dtf.tools.initiatesoftwaredistribute.InitiateSoftwareDistributeAntTask"
+			classpath="${lib}/DTFTools.jar;${lib/TestingFramework.jar}"/>
+
+
+	<target name="testNameService">
+
+		<junit printsummary="yes" haltonfailure="yes">
+		  <classpath>
+		    <pathelement location="${lib}/tests.jar"/>
+		    <pathelement path="${java.class.path}"/>
+		  </classpath>
+
+		  <formatter type="plain"/>
+
+		  <test name="org.jboss.dtf.dtftests.nameservice.NameServiceTestCase"
+		  		haltonfailure="no" outfile="result">
+		    <formatter type="xml"/>
+		  </test>
+
+		</junit>
+	</target>
+
+	<target name="testProductRepository">
+
+		<junit printsummary="yes" haltonfailure="yes">
+		  <classpath>
+		    <pathelement location="${lib}/tests.jar"/>
+		    <pathelement path="${java.class.path}"/>
+		  </classpath>
+
+		  <formatter type="plain"/>
+
+		  <test name="org.jboss.dtf.dtftests.productrepository.ProductRepositoryTestCase"
+		  		haltonfailure="no" outfile="result">
+		    <formatter type="xml"/>
+		  </test>
+
+		</junit>
+	</target>
+
+	<target name="testDBManager">
+
+		<junit printsummary="yes" haltonfailure="yes">
+		  <classpath>
+		    <pathelement location="${lib}/tests.jar"/>
+		    <pathelement location="${lib}/ext/fscontext.jar"/>
+		    <pathelement location="${lib}/ext/providerutil.jar"/>
+		    <pathelement location="${lib}/ext/mysql-connector-java-3.1.12-bin.jar"/>
+		    <pathelement path="${java.class.path}"/>
+		  </classpath>
+
+		  <formatter type="plain"/>
+
+		  <test name="org.jboss.dtf.dtftests.dbmanager.DBManagerTestCase"
+		  		haltonfailure="no" outfile="result">
+		    <formatter type="xml"/>
+		  </test>
+
+		</junit>
+	</target>
+
+	<target name="assignProductInstaller">
+		<echo message="Assigning product installer..."/>
+		<assigninstaller nameservice="${nameservice.uri}"
+						installurl="http://localhost:8080/dtf/installers/TestProductInstaller.xml"
+						product="TestProduct"/>
+	</target>
+
+	<target name="runSampleTest">
+		<sleep seconds="3"/>
+		<echo message="Scheduling test run: sample test on Linux"/>
+		<schedule nameserviceuri="${nameservice.uri}">
+			<runwhenpossible>
+				<testrun testdefsurl="http://localhost:8080/dtf/producttests/SampleTestDefinition.xml"
+						testselectionsurl="http://localhost:8080/dtf/producttests/SampleTestSelection.xml"
+						distributionlist="${distribution.list}"
+						softwareversion="${software.version}"/>
+			</runwhenpossible>
+		</schedule>
+	</target>
+
+</project>

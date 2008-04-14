@@ -1,0 +1,211 @@
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<project name="ADTF-Install" default="help">
+
+	<property name="install.dir" location="/tmp/DTF"/>
+	<property name="webapps.dir" location="/tmp/DTFwebapps"/>
+
+	<property name="temp.dir" location="/tmp/adtf/"/>
+
+	<target name="help">
+
+		<echo message="Arjuna Distributed Testing Framework"/>
+		<echo message="Install script version:($Id: install.xml 170 2008-03-25 18:59:26Z jhalliday $)"/>
+		<echo message="Usage:-"/>
+		<echo message="  Properties: install.dir - The directory to install the DTF into"/>
+		<echo message="              webapps.dir - The web applications directory"/>
+		<echo message="  Targets: full, webapp, mainservices, testnode, coordinator, ntservice"/>
+
+	</target>
+
+	<target name="full" depends="webapp, mainservices, testnode, coordinator"/>
+
+	<target name="ntservice">
+
+		<echo message="Installing NT Service"/>
+		<copy todir="${install.dir}/javaservice">
+			<fileset dir="${temp.dir}/javaservice" includes="**/**"/>
+		</copy>
+
+		<echo message="Using jvm '${java.home}'"/>
+
+		<exec dir="${install.dir}" os="Windows 2000" executable="${install.dir}/javaservice/javaservice.exe">
+			<arg line="-install"/>
+			<arg line="ADTFTestNode"/>
+			<arg line="${java.home}/bin/classic/jvm.dll"/>
+			<arg line="-Djava.class.path=.;${install.dir}/lib/TestingFramework.jar;${install.dir}/lib/ext/jdom.jar;${install.dir}/lib/ext/xerces.jar"/>
+			<arg line="-start"/>
+			<arg line="org.jboss.dtf.testframework.servicemanager.ServiceManager"/>
+			<arg line="-params"/>
+			<arg line="${install.dir}/testenv/testnode/service_manager.xml"/>
+			<arg line="-out"/>
+			<arg line="${install.dir}/testenv/testnode/ntservice.out"/>
+			<arg line="-err"/>
+			<arg line="${install.dir}/testenv/testnode/ntservice.err"/>
+		</exec>
+
+	</target>
+
+	<target name="ntservice.uninstall">
+
+		<echo message="Uninstalling NT Service"/>
+
+		<exec dir="${install.dir}" os="Windows 2000" executable="${temp.dir}/javaservice/javaservice.exe">
+			<arg line="-uninstall"/>
+			<arg line="ADTFTestNode"/>
+		</exec>
+
+	</target>
+
+	<target name="init">
+
+		<echo message="Creating temporary directory"/>
+		<mkdir dir="${temp.dir}"/>
+        <mkdir dir="${install.dir}"/>
+
+		<echo message="Unpacking install image"/>
+		<unzip src="adtf.zip" dest="${temp.dir}"/>
+
+	</target>
+
+	<target name="core" depends="init">
+
+		<echo message="Installing: core"/>
+
+		<mkdir dir="${install.dir}/bin"/>
+		<mkdir dir="${install.dir}/lib"/>
+		<mkdir dir="${install.dir}/docs"/>
+		<mkdir dir="${install.dir}/tests"/>
+
+		<copy todir="${install.dir}/bin">
+			<fileset dir="${temp.dir}/bin" includes="linuxprochandler"/>
+		</copy>
+		<!-- Mark the file as executable -->
+		<chmod file="${install.dir}/bin/linuxprochandler" perm="u+x"/>
+
+		<copy todir="${install.dir}/docs">
+			<fileset dir="${temp.dir}/docs" includes="**/**"/>
+		</copy>
+
+		<copy todir="${install.dir}/lib">
+			<fileset dir="${temp.dir}/lib" includes="**/**"/>
+		</copy>
+
+		<copy todir="${install.dir}/tests">
+			<fileset dir="${temp.dir}/tests" includes="**/**"/>
+		</copy>
+		<mkdir dir="${install.dir}/tests/jndiFSContext"/>
+		<mkdir dir="${install.dir}/tests/jndiFSContext/jdbc"/>
+
+		<copy todir="${install.dir}">
+			<fileset dir="${temp.dir}" includes="setup-dtf.sh"/>
+		</copy>
+
+		<!-- Mark the shell script as executable -->
+		<chmod file="${install.dir}/setup-dtf.sh" perm="u+x"/>
+
+	</target>
+
+	<target name="mainservices" depends="core">
+
+		<echo message="Installing: mainservices"/>
+
+		<mkdir dir="${install.dir}/testenv/services"/>
+
+		<copy todir="${install.dir}/testenv/services">
+			<fileset dir="${temp.dir}/testenv/services" includes="**/**"/>
+		</copy>
+
+		<!-- Mark the shell script as executable -->
+		<chmod file="${install.dir}/testenv/services/run_services.sh" perm="u+x"/>
+
+	</target>
+
+	<target name="webapp" depends="core">
+
+		<echo message="Installing: webapp"/>
+
+		<delete dir="${webapps.dir}/dtf"/>
+		<mkdir dir="${webapps.dir}/dtf"/>
+
+		<unwar src="${temp.dir}/dtf.war" dest="${webapps.dir}/dtf"/>
+
+	</target>
+
+	<target name="testnode" depends="core">
+
+		<echo message="Installing: testnode"/>
+
+		<mkdir dir="${install.dir}/testenv/testnode"/>
+
+		<copy todir="${install.dir}/testenv/testnode">
+			<fileset dir="${temp.dir}/testenv/testnode1" includes="**/**"/>
+		</copy>
+
+		<!-- Mark the shell script as executable -->
+		<chmod file="${install.dir}/testenv/testnode/run_testnode.sh" perm="u+x"/>
+
+	</target>
+
+
+	<target name="coordinator" depends="core">
+
+		<echo message="Installing: coordinator"/>
+
+		<mkdir dir="${install.dir}/testenv/coordinator"/>
+
+		<copy todir="${install.dir}/testenv/coordinator">
+			<fileset dir="${temp.dir}/testenv/coordinator" includes="**/**"/>
+		</copy>
+
+		<!-- Mark the shell script as executable -->
+		<chmod file="${install.dir}/testenv/coordinator/run_coordinator.sh" perm="u+x"/>
+
+	</target>
+
+	<target name="install-sample">
+
+		<echo message="Installing: sample product and test cases..."/>
+
+		<!-- copy the product definition into place -->
+		<copy todir="${install.dir}/testenv/services/products">
+			<fileset dir="${temp.dir}/tests/products" includes="TestProduct.xml"/>
+		</copy>
+		<!-- copy the product installer into place -->
+		<copy todir="${webapps.dir}/dtf/productinstallers">
+			<fileset dir="${temp.dir}/tests/installers" includes="TestProductInstaller.xml"/>
+		</copy>
+
+		<!-- copy the product into place (product includes 'test' classes) -->
+		<copy todir="${webapps.dir}/dtf/productbuilds">
+			<fileset dir="${temp.dir}/tests/" includes="TestProduct.zip"/>
+		</copy>
+
+		<!-- copy the testdefinition and selection into place -->
+		<copy todir="${webapps.dir}/dtf/producttests">
+			<fileset dir="${temp.dir}/tests/testdefs" includes="SampleTestDefinition.xml, SampleTestSelection.xml"/>
+		</copy>
+
+	</target>
+
+
+</project>
+

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="CLASSPATH">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="DIRECTORY" minOccurs="0"/>
+				<xs:element ref="JAR" minOccurs="0"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DIRECTORY">
+		<xs:complexType>
+			<xs:attribute name="NAME" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="JAR">
+		<xs:complexType>
+			<xs:attribute name="NAME" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PRODUCT_CONFIGURATION">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CLASSPATH"/>
+				<xs:element ref="PRODUCT_HOME" minOccurs="0"/>
+				<xs:element ref="PROPERTY" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="SET" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="NAME" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ORB_HOME">
+		<xs:complexType>
+			<xs:attribute name="VALUE" type="xs:anyURI" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PARAM">
+		<xs:complexType>
+			<xs:attribute name="NAME" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="fail_indicator"/>
+						<xs:enumeration value="pass_indicator"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="VALUE" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="Failed"/>
+						<xs:enumeration value="Passed"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PRODUCT_HOME">
+		<xs:complexType>
+			<xs:attribute name="VALUE" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PROPERTY">
+		<xs:complexType>
+			<xs:attribute name="NAME" type="xs:string" use="required"/>
+			<xs:attribute name="VALUE" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SET">
+		<xs:complexType>
+			<xs:attribute name="NAME" type="xs:string" use="required"/>
+			<xs:attribute name="VALUE" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TASK_RUNNER">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PARAM" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="NAME" type="xs:string" use="required"/>
+			<xs:attribute name="CLASS" type="xs:string" use="required"/>
+			<xs:attribute name="LOG_TO" type="xs:anyURI" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TEST_NODE_CONFIGURATION">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TASK_RUNNER" maxOccurs="unbounded"/>
+				<xs:element ref="PRODUCT_CONFIGURATION" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="NAME" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
