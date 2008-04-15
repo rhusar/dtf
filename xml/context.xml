@@ -18,9 +18,10 @@
   (C) 2008,
   @author JBoss Inc.
 -->
-<!-- the Tomcat 5 Context for the DTF web application -->
+<!-- the Tomcat 6 Context for the DTF web application -->
 
-<Context>
+<Context privileged="true">
+    <!-- privileged is needed to allow use of the invoker servlet -->
 
   <!-- set up JDBC access to the DTF database for the DTF web application -->
   <Resource name="jdbc/ResultsDB"

@@ -30,15 +30,16 @@
 
 			<!-- DBManager needs to parse XML product descriptions -->
 			<jar name="../lib/ext/jdom.jar"/>
-			<jar name="../lib/ext/xerces.jar"/>
+
+            <!-- <jar name="../lib/ext/xerces.jar"/> -->
 
 			<!-- DBManager needs to use the filesystem as a JNDI nameservice -->
 			<jar name="../lib/ext/providerutil.jar"/>
 			<jar name="../lib/ext/fscontext.jar"/>
 
 			<!-- DBManager needs JDBC access to a MySQL database -->
-			<jar name="../lib/ext/jdbc2_0-stdext.jar"/>
-			<jar name="../lib/ext/mysql-connector-java-3.1.12-bin.jar"/>
+			<!-- <jar name="../lib/ext/jdbc2_0-stdext.jar"/> -->
+			<jar name="../lib/ext/mysql-connector-java-5.1.6-bin.jar"/>
 		</classpath>
 
 		<parameters>

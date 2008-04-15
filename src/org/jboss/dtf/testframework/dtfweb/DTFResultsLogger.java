@@ -994,7 +994,7 @@ public class DTFResultsLogger
 				                                     "UploadWebDirectory VARCHAR(255),"+
 				                                     "RootURL VARCHAR(255) )");
 
-				s.execute("insert into Configuration values (0,'//localhost:1099/NameService','/opt/jakarta-tomcat-4.1.31/webapps/dtf/producttests','http://localhost:8080/dtf/producttests','http://localhost:8080/dtf/')");
+				s.execute("insert into Configuration values (0,'//localhost:1099/NameService','/opt/jakarta-tomcat-6.0.16/webapps/dtf/producttests','http://localhost:8080/dtf/producttests','http://localhost:8080/dtf/')");
 
 			}
 			catch (SQLException e)

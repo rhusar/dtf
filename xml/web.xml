@@ -32,12 +32,11 @@
         no description
     </description>
 
-	<!--
+	<!-- this requies the invoker servlet to be uncommented in tomcat's web.xml or moved in here -->
 	<servlet-mapping>
 	  <servlet-name>invoker</servlet-name>
 	  <url-pattern>/servlet/*</url-pattern>
 	</servlet-mapping>
-	-->
 
 	<welcome-file-list>
 	  <welcome-file>default.jsp</welcome-file>

@@ -68,9 +68,9 @@
 
 	</task-runner-definitions>
 
-	<jvm-definitions default="1.4.2">
-		<jvm version="1.4.2" java-home="/opt/j2sdk1.4.2_13"/>
-		<jvm version="1.5.0" java-home="/opt/jdk1.5.0_06"/>
+	<jvm-definitions default="1.5.0">
+		<jvm version="1.5.0" java-home="/opt/jdk1.5.0_15"/>
+        <jvm version="1.6.0" java-home="/opt/jdk1.6.0_05"/>
 	</jvm-definitions>
 
 </test-node-configuration>
