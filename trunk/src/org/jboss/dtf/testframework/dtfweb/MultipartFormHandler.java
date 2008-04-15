@@ -63,7 +63,7 @@ public class MultipartFormHandler
                 } else {
                     File file = new File(destDir+"/"+item.getName());
                     item.write(file);
-                    _formData.put(item.getName(), file);
+                    _formData.put("upload", file);
                 }
             }
 		}
