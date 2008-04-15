@@ -27,6 +27,9 @@ activation.jar  (jaf.txt)
 # Apache Commons FileUpload 1.2.1 from http://commons.apache.org/fileupload/
 commons-fileupload-1.2.1.jar    (apache2.txt)
 
+# Apache Commons IO 1.3.2 from http://commons.apache.org/io/ (required by FileUpload)
+commons-io-1.3.2.jar    (apache2.txt)
+
 # iText 2.0.8 from http://www.lowagie.com/iText/
 iText-2.0.8.jar
 
@@ -51,3 +54,7 @@ mysql-connector-java-5.1.6-bin.jar
 
 # sun servlet API 2.5 from http://java.sun.com/products/servlet/
 servlet-2_5-api.jar
+
+# sun JNDI 1.2.1 filesystem provider 1.2.Beta3 from http://java.sun.com/products/jndi/
+providerutil.jar
+fscontext.jar
