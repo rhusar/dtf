@@ -44,7 +44,7 @@
         <set name="COMPUTE_HOME" value="/tmp/DTF/testenv/compute/product" />
         <set name="COMPUTEQA_HOME" value="/tmp/DTF/testenv/compute/qa" />
       </sets>
-      <jvm id="1.4.2" />
+      <jvm id="1.5.0" />
       <default-classpath name="main" />
       <node-exclusions />
     </node-configuration>

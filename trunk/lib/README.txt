@@ -32,7 +32,7 @@ commons-io-1.3.2.jar    (apache2.txt)
 
 # Apache ant 1.7.0 from http://ant.apache.org/
 ant.jar
-ant--launcher.jar
+ant-launcher.jar
 (apache2.txt)
 
 # iText 2.0.8 from http://www.lowagie.com/iText/

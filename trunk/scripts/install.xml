@@ -18,16 +18,16 @@
   (C) 2008,
   @author JBoss Inc.
 -->
-<project name="ADTF-Install" default="help">
+<project name="JBossDTF-Install" default="help">
 
 	<property name="install.dir" location="/tmp/DTF"/>
 	<property name="webapps.dir" location="/tmp/DTFwebapps"/>
 
-	<property name="temp.dir" location="/tmp/adtf/"/>
+	<property name="temp.dir" location="/tmp/dtf/"/>
 
 	<target name="help">
 
-		<echo message="Arjuna Distributed Testing Framework"/>
+		<echo message="JBoss Distributed Testing Framework"/>
 		<echo message="Install script version:($Id: install.xml 170 2008-03-25 18:59:26Z jhalliday $)"/>
 		<echo message="Usage:-"/>
 		<echo message="  Properties: install.dir - The directory to install the DTF into"/>
@@ -49,7 +49,7 @@
 
 		<exec dir="${install.dir}" os="Windows 2000" executable="${install.dir}/javaservice/javaservice.exe">
 			<arg line="-install"/>
-			<arg line="ADTFTestNode"/>
+			<arg line="JBossDTFTestNode"/>
 			<arg line="${java.home}/bin/classic/jvm.dll"/>
 			<arg line="-Djava.class.path=.;${install.dir}/lib/TestingFramework.jar;${install.dir}/lib/ext/jdom.jar;${install.dir}/lib/ext/xerces.jar"/>
 			<arg line="-start"/>
@@ -70,7 +70,7 @@
 
 		<exec dir="${install.dir}" os="Windows 2000" executable="${temp.dir}/javaservice/javaservice.exe">
 			<arg line="-uninstall"/>
-			<arg line="ADTFTestNode"/>
+			<arg line="JBossDTFTestNode"/>
 		</exec>
 
 	</target>
@@ -82,7 +82,7 @@
         <mkdir dir="${install.dir}"/>
 
 		<echo message="Unpacking install image"/>
-		<unzip src="adtf.zip" dest="${temp.dir}"/>
+		<unzip src="jbossdtf.zip" dest="${temp.dir}"/>
 
 	</target>
 

@@ -22,7 +22,7 @@
 Installing the DTF
 ==================
 
-Instructions follow showing how to install the DTF from Branch_DTF_3_9 on a laptop.
+Instructions follow showing how to install the DTF on a laptop.
 In this configuration, you can start the DTF services, one test node, and the DTFweb GUI.
 
 This document includes the following sections:
@@ -36,18 +36,19 @@ This document includes the following sections:
 0. Base software you will need
 ------------------------------
 * MySQL
-- I am using  Ver 14.12 Distrib 5.0.27, installed in default Fedora Core 6 location
-- I am also using mysql-connector-java-5.0.5-bin.jar as the MySQL Connector/J JDBC driver,
-which needs to be made available to both the DTF Runtime (in $DTF_HOME/lib/ext) and Tomcat
-(in $CATALINA_HOME/common/lib and $CATALINA_HOME/webapps/dtf/WEB-INF/lib)
+- You need access to a MySQL 5.0 (or later) server.
+- The MySQL JDBC driver is provided in the DTF lib/ or you can you use a later version.
+- The driver needs to be installed in tomcat, see below
 
 * Tomcat
-- I am using version 5.5.20, installed in /opt/apache-tomcat-5.5.20
-- old instructions for use of Tomcat 4 with DTF appear in Appendix
+- You need access to a tomcat server. We use 6.0 but 5.5 may also work.
+- copy the mysql drivers into tomcat. On 6.0 they go in lib/
 
 * ant
-- I am using version 1.6.5, installed in /opt/apache-ant-1.6.5
+- We use version 7.
 
+* JDK. Minimum Java 1.5
+- compile with the earliest jdk you want to execute tests on or you'll have .class file version problems.
 
 1. Setup MySQL for DTF use
 --------------------------
@@ -76,16 +77,9 @@ tables are created and if not, create them
 2. Setup Tomcat for DTF use
 ---------------------------
 - you need to several things to set up Tomcat:
-(i) modify $CATALINA_HOME/conf/tomcat-users.xml to add enable the managet webapp
-- add a user of your choice with manager role to tomcat-users:
-<tomcat-users>
-  <role rolename="manager"/>
-  <user usename="someuser" password="somepassword" roles="manager"/>
-</tomcat-users>
-The manager webapp will be used to deploy the dtf.war web application which defines the DTF GUI.
 
-(ii) modify $CATALINA_HOME/conf/web.xml to turn on the default servlet invoker
-- the two sections which need to be uncommented are:
+(i) modify $CATALINA_HOME/conf/web.xml to turn on (uncomment) the default servlet invoker
+
     <servlet>
         <servlet-name>invoker</servlet-name>
         <servlet-class>
@@ -98,27 +92,20 @@ The manager webapp will be used to deploy the dtf.war web application which defi
         <load-on-startup>2</load-on-startup>
     </servlet>
 
-    ...
+(ii) Setup libraries required by Tomcat when using the dtf.war web application:
+- copy the MySQL Connector/J driver mysql-connector-java-5.1.16-bin.jar to $CATALINA_HOME/lib
 
-    <!-- The mapping for the invoker servlet -->
-    <servlet-mapping>
-        <servlet-name>invoker</servlet-name>
-        <url-pattern>/servlet/*</url-pattern>
-    </servlet-mapping>
-
-(iii) Setup libraries required by Tomcat when using the dtf.war web application:
-- copy the MySQL Connector/J driver mysql-connector-java-5.0.5-bin.jar to $CATALINA_HOME/common/lib
-- copy the JavaMail library activation.jar to $CATALINA_HOME/common/lib
-- NOTE: may also need xerces.jar, mail.jar, commons-logging-1.1.jar and log4j-1.2.8.jar
+- TODO copy the JavaMail library activation.jar to $CATALINA_HOME/common/lib ??
+- TODO obsolete? NOTE: may also need xerces.jar, mail.jar, commons-logging-1.1.jar and log4j-1.2.8.jar
 
 The DTFweb GUI makes JDBC connections to the MySQL database, and so Tomcat needs access to the
 Connector/J driver. The DTFweb GUI also needs to use JavaMail to notify users that test runs have
 completed.
 
-(iv) The dtf.war web application includes the following Resource definition in META-INF/context.xml:
+(iii) The dtf.war web application includes the following Resource definition in META-INF/context.xml:
 
- <!-- the Tomcat 5 Context for the DTF web application -->
-<Context>
+ <!-- the Tomcat 6 Context for the DTF web application -->
+<Context privileged="true">
 
   <!-- set up JDBC access to the DTF database for the DTF web application -->
   <Resource name="jdbc/ResultsDB"
@@ -137,36 +124,13 @@ completed.
 	    />
 </Context>
 
-This Resource is used to define access to the JDBC database from Tomcat. This context definition differs
-in format and placement from the equivalent definition in Tomcat 4. You will need to adjust the url to
-point to your MySQL database.
+You will need to adjust the url to point to your MySQL database.
 
- The dtf.war web application accesses the defined resource via its WEB-INF/web.xml descriptor:
+ The dtf.war web application accesses the defined resource via its WEB-INF/web.xml descriptor.
+ You may need to change the mail server config.
 
  <web-app>
-    <display-name>DTF Web Interface</display-name>
-    <description>GUI access to the DTF</description>
-
-	<!--
-	<servlet-mapping>
-	  <servlet-name>invoker</servlet-name>
-	  <url-pattern>/servlet/*</url-pattern>
-	</servlet-mapping>
-	-->
-
-	<welcome-file-list>
-	  <welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-
-	<resource-ref>
-		<description>
-			Resource reference to a factory for java.sql.Connection
-			instances that may be used for talking to the MySQL database.
-		</description>
-		<res-ref-name>jdbc/ResultsDB</res-ref-name>
-		<res-type>javax.sql.DataSource</res-type>
-		<res-auth>Container</res-auth>
-	</resource-ref>
+    ....
 
     <env-entry>
       <description>
@@ -179,39 +143,23 @@ point to your MySQL database.
 
 </web-app>
 
-
-
-(v) use the Tomcat manager web application to install the dtf.war web application correctly within
-Tomcat. (This step can be completed after you have built and installed the DTF as described in 3.)
-
-The manager application is accessible from the main Tomcat web page, or via the URL
-http://locahost:8080/manager/html. You will be prompted for the username and password you defined
-earlier in tomcat-users.xml when you access this page. At the bottom of the Manager page is a deployment
-section where you may locate the dtf.war file and deploy it to the Tomcat instance.
-
-(v) Once these steps have been completed, the DTF is then accessed via http://localhost:8080/dtf (or similar,
+(iv) After installation (see below), the DTF can be accessed via http://localhost:8080/dtf (or similar,
 depending on your configured Tomcat host and port)
 
-Generally, i've found that Tomcat can give problems of various types, and I found myself looking in
-$CATALINA_HOME/logs/catalina.out too frequently. Common problems relate to
-(i) the MySQL JDBC driver not being found
-(ii) starting up Tomcat with different Java versions which seem to corrupt it and force reinstallation
-of Tomcat and the DTF stuff.
+For debugging, $CATALINA_HOME/logs/catalina.out is useful
+
 
 3. Build the DTF from source and install
 ----------------------------------------
-- I check out Branch_DTF_3_9 as a basic project in the workspace, not as a Java project using the
-New Project Wizard. One of the tasks on my TODO list is to learn how to set it up as a Java project.
 
-- the Branch_DTF_3_9 distribution should build cleanly under Eclipse, producing a 'dist' directory
-containing the dtf distribution file adtf.zip and an installer script, among other stuff
+- run 'ant'. The dist dir will now contain a DTF binary distribution.
 
--  to install the DTF, open the installer.xml file and set the properties:
+-  to install the DTF, open the dist/install.xml file and set the properties:
 * install.dir,  where you want the DTF software to reside,
 * webapps.dir, where you want the webapp deployed
 and then run the 'full' target of the install script:
 
-> ant -f install.xml full
+> cd dist; ant -f install.xml full
 
 - the distribution is configured to run by default on a single host (called localhost), with the following settings:
 
@@ -221,7 +169,7 @@ and then run the 'full' target of the install script:
 * product installers in $CATALINA_HOME/webapps/dtf/productinstallers
 * product tests and selections in $CATALINA_HOME/webapps/dtf/producttests
 
-- the installation as describes above has no products, no installers, no tests, but should start cleanly in
+- the installation as described above has no products, no installers, no tests, but should start cleanly in
 that state from DTFweb, at which time you can define products and write your own tests. Section 5 shows
 how to do this.
 
@@ -253,6 +201,10 @@ You should be able to run the DTF by doing the following:
 > cd $DTF_HOME
 > . setup-dtf.sh
 > cd testenv/testnode
+
+edit nodeconfig.xml jvm-definitions section to reflect
+the location(s) of the jvm(s) installed on your system.
+
 > ./run_testnode.sh
 
 * point your browser to http://localhost:8080/dtf
@@ -261,11 +213,11 @@ You should be able to run the DTF by doing the following:
 - check that the DTFweb setup is correct. Click on the menu item "setup".
 The resulting page of input fields should look something like this:
 DefaultNameService URI	      //localhost:1099/NameService
-UploadDirectory		      /opt/jakarta-tomcat-4.1.31/dtf/producttests
+UploadDirectory		      /opt/jakarta-tomcat-6.0.16/dtf/producttests
 UploadWebDirectory	      http://localhost:8080/dtf/producttests
 Root URL		      http://localhost:8080/dtf
 - you may receive Tomcat exceptions upon startup if the installation has not been
-performed correctly. Check the Tomcat logs in $TOMCAT_HOME/logs.
+performed correctly. Check the Tomcat logs in $CATALINA_HOME/logs.
 
 
 5. Run a test case against a product
@@ -273,101 +225,12 @@ performed correctly. Check the Tomcat logs in $TOMCAT_HOME/logs.
 - as mentioned earlier, this running DTF instance has no products, test cases or test selections defined
 yet
 - to install a sample product, product installer, and sample test definition and selection, run the 'install-sample'
-target of the installer.xml file. In order to run this example, you will need to do a couple of things:
+target of the install.xml file. In order to run this example, you will need to do a couple of things:
 (i) add an OS (e.g. Linux) in the Setup menu
 (ii) associate the TestProduct with the TestProductInstaller in the Deployment menu (using the fully qualified name
 of the installer as http://localhost:8080/dtf/productinstallers/TestProductInstaller.xml)
+(iii) You may also need to edit TestProduct.xml to set DTF_HOME to the correct value.
 You should then be able to:
 (i) deploy the product on a single test node from the Deployment menu
 (ii) import the product definition, and run the sample test from the Management menu
 
-
-
-Appendix
----------
-These are instructions for using Tomcat 4 with the DTF.
-
-2. Setup Tomcat for DTF use
----------------------------
-- you need to several things to set up Tomcat:
-1. modify $CATALINA_HOME/conf/server.xml to add a DTF context called dtf
-2. modify $CATALINA_HOME/conf/web.xml to turn on the default servlet invoker
-3. Copy the MySQL Connector/J driver mysql-connector-java-3.1.12-bin.jar to $CATALINA_HOME/common/lib
-Although this driver also appears in the web application's local library WEB-INF/lib, not having it
-in one of the other place seems to cause Tomcat problems.
-4. copy the DTFweb web application war dtf.war in exploded form to $CATALINA_HOME/webapps (this step is
-part of the general DTF installation described below)
-5. adjust access permissions on the new web application directory, if desired. I set up a group
-called tomcat which allows write access to the directories where users need to place installer scripts,
-etc. and only read access elsewhere.
-
-The DTF is then accessed via http://localhost:8080/dtf (or similar, depending on your configured host and port)
-
-Here are diffs of the changes, with respect to the original server.xml and web.xml:
-
-1. Add the dtf context to Tomcat
-
-diff -r jakarta-tomcat-4.1.31/conf/server.xml /opt/jakarta-tomcat-4.1.31/conf/server.xml
-380a381,484
->       <!-- Context for DTF -->
->
->       <Context path="/dtf" docBase="dtf">
->
->         <Logger className="org.apache.catalina.logger.FileLogger"
->                 prefix="localhost_DTF_log." suffix=".txt" timestamp="true"/>
->
->         <!-- set up JDBC access to the DTF database for the DTF web application -->
->         <Resource name="jdbc/ResultsDB" auth="Container" type="javax.sql.DataSource"/>
->
->           <ResourceParams name="jdbc/ResultsDB">
->
->           <parameter>
->             <name>username</name>
->             <value>dtfuser</value>
->           </parameter>
->
->           <parameter>
->             <name>password</name>
->             <value>dtfuser</value>
->           </parameter>
->
->           <parameter>
->             <name>driverClassName</name>
->             <value>org.gjt.mm.mysql.Driver</value>
->           </parameter>
->
->           <parameter>
->             <name>url</name>
->             <value>jdbc:mysql://localhost:3306/dtf</value>
->           </parameter>
->
->           <parameter>
->             <name>maxActive</name>
->             <value>8</value>
->           </parameter>
->
->           <parameter>
->             <name>maxIdle</name>
->             <value>4</value>
->           </parameter>
->
->       </ResourceParams>
->
->       </Context>
-
-
-2. Turn on the servlet invoker - the DTFweb JSP pages sometimes call servlets with URLs like
-http://localhost:8080/servlet/<servlet_name>. This involves removing comments surropunding the
-servlet invoker definition.
-
-diff -r jakarta-tomcat-4.1.31/conf/web.xml /opt/jakarta-tomcat-4.1.31/conf/web.xml
-281d280
-< <!--
-286d284
-< -->
-
-Generally, i've found that Tomcat can give problems of various types, and I found myself looking in
-$CATALINA_HOME/logs/catalina.out too frequently. Common problems relate to
-(i) the MySQL JDBC driver not being found
-(ii) starting up Tomcat with different Java versions which seem to corrupt it and force reinstallation
-of Tomcat and the DTF stuff.

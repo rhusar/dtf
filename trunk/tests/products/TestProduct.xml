@@ -49,7 +49,7 @@
         <set name="PRODUCT_HOME" value="/tmp/DTF/testenv/sample/product" />
         <set name="QA_HOME" value="/tmp/DTF/testenv/sample/qa" />
       </sets>
-      <jvm id="1.4.2" />
+      <jvm id="1.5.0" />
       <default-classpath name="main" />
       <node-exclusions />
     </node-configuration>

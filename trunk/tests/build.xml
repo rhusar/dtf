@@ -81,7 +81,7 @@
 		    <pathelement location="${lib}/tests.jar"/>
 		    <pathelement location="${lib}/ext/fscontext.jar"/>
 		    <pathelement location="${lib}/ext/providerutil.jar"/>
-		    <pathelement location="${lib}/ext/mysql-connector-java-3.1.12-bin.jar"/>
+		    <pathelement location="${lib}/ext/mysql-connector-java-5.1.6-bin.jar"/>
 		    <pathelement path="${java.class.path}"/>
 		  </classpath>
 

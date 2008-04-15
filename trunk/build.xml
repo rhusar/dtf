@@ -46,7 +46,7 @@
 	<property name="build" value="build"/>
 	<property name="tests.build" value="test-build"/>
 	<property name="bin.build" value="bin.build"/>
-	<property name="deploy-dir" value="/opt/jakarta-tomcat-5.5.20/webapps/"/>
+	<property name="deploy-dir" value="/opt/apache-tomcat-6.0.16/webapps"/>
 
 	<!--
 		Classpaths for compilation of framework classes, org.jboss.dtf.tools and tests
@@ -226,8 +226,12 @@
 		<copy todir="${war}/WEB-INF/lib/">
 			<fileset dir="${lib}">
 				<include name="**/jdom.jar"/>
-				<include name="**/mysql-connector-java-5.0.5-bin.jar"/>
+                <include name="**/commons-fileupload-1.2.1.jar"/>
+                <include name="**/commons-io-1.3.2.jar"/>
+                <!--
+                <include name="**/mysql-connector-java-5.0.5-bin.jar"/>
 				<include name="**/struts.jar"/>
+				-->
 			</fileset>
 		</copy>
 
@@ -318,7 +322,7 @@
 		</zip>
 
 		<!-- Create a zip file of the distribution for use with install.xml -->
-		<zip zipfile="${dist}/adtf.zip">
+		<zip zipfile="${dist}/jbossdtf.zip">
 			<zipfileset dir="${dist}" includes="dtf.war,install.xml,setup-dtf.sh"/>
 			<zipfileset dir="${dist}/lib" prefix="lib"/>
 			<zipfileset dir="${dist}/bin" prefix="bin"/>
