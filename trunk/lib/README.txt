@@ -50,7 +50,7 @@ log4j-1.2.15.jar    (apache2.txt)
 # JavaMail 1.4.1 from http://java.sun.com/products/javamail/
 smtp.jar                      now 1.4.1 http://java.sun.com/products/javamail/  (needs JAF 1.1.1 or java 6)
 mailapi.jar                   now 1.4.1 http://java.sun.com/products/javamail/  (needs JAF 1.1.1 or java 6)
-mail.jar                      now 1.4.1 http://java.sun.com/products/javamail/  (needs JAF 1.1.1 or java 6)
+##mail.jar                      now 1.4.1 http://java.sun.com/products/javamail/  (needs JAF 1.1.1 or java 6)
 (javamail.txt)
 
 # mySQL Connector/J 5.1.6 from http://dev.mysql.com/downloads/connector/j/5.1.html
