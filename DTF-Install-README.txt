@@ -94,8 +94,7 @@ tables are created and if not, create them
 
 (ii) Setup libraries required by Tomcat when using the dtf.war web application:
 - copy the MySQL Connector/J driver mysql-connector-java-5.1.16-bin.jar to $CATALINA_HOME/lib
-
-- TODO copy the JavaMail library activation.jar to $CATALINA_HOME/common/lib ??
+- copy activation.jar, mailapi.jar and smtp.jar to $CATALINA_HOME/lib
 - TODO obsolete? NOTE: may also need xerces.jar, mail.jar, commons-logging-1.1.jar and log4j-1.2.8.jar
 
 The DTFweb GUI makes JDBC connections to the MySQL database, and so Tomcat needs access to the
