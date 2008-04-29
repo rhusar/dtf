@@ -1,0 +1,630 @@
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<project name="JBoss Distributed Test Framework" default="dist" basedir=".">
+
+	<!-- =========================================================================  -->
+	<!-- Configuration                                                              -->
+	<!-- =========================================================================  -->
+
+	<!--
+		Global properties for this build
+	-->
+
+	<property name="src" value="src"/>
+	<property name="javaservice" value="javaservice"/>
+	<property name="tests.src" value="tests"/>
+	<property name="prochandler" value="prochandler"/>
+	<property name="docdest" value="docs"/>
+	<property name="scripts" value="scripts"/>
+	<property name="masterdocs" value="masterdocs"/>
+	<property name="configs" value="configs"/>
+	<property name="lib" value="lib"/>
+	<property name="xml" value="xml"/>
+	<property name="jsp" value="jsp"/>
+	<property name="bin" value="bin"/>
+
+	<property name="dist" value="dist"/>
+	<property name="war" value="war"/>
+	<property name="build" value="build"/>
+	<property name="tests.build" value="test-build"/>
+	<property name="bin.build" value="bin.build"/>
+	<property name="deploy-dir" value="/opt/apache-tomcat-6.0.16/webapps"/>
+
+	<!--
+		Classpaths for compilation of framework classes, org.jboss.dtf.tools and tests
+	-->
+
+	<path id="compile.classpath">
+        <fileset dir="${lib}">
+            <include name="*.jar"/>
+        </fileset>
+	</path>
+
+	<!-- =========================================================================  -->
+	<!--  Initialization                                                            -->
+	<!-- =========================================================================  -->
+
+	<target name="init">
+
+		<!-- Create the time stamp -->
+		<tstamp/>
+
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}"/>
+		<mkdir dir="${tests.build}"/>
+		<mkdir dir="${bin.build}"/>
+		<mkdir dir="${docdest}"/>
+		<mkdir dir="${war}"/>
+
+	</target>
+
+	<!-- =========================================================================  -->
+	<!--  Compilation targets                                                       -->
+	<!-- =========================================================================  -->
+
+	<target name="compile" depends="compile-src, compile-prochandler, compile-tools, compile-tests"/>
+
+	<target name="compile-src" depends="init">
+
+		<!-- Compile the java code from ${src} into ${build} -->
+		<echo message="Compiling main source tree"/>
+
+		<javac srcdir="${src}"
+			destdir="${build}"
+			debug="on"
+			classpathref="compile.classpath">
+            <exclude name="**/OraclePlugin.java"/>
+        </javac>
+
+		<rmic classname="org.jboss.dtf.testframework.nameservice.NameService" base="${build}"/>
+		<rmic classname="org.jboss.dtf.testframework.serviceregister.ServiceRegister" base="${build}"/>
+		<rmic classname="org.jboss.dtf.testframework.testnode.TestNode" base="${build}"/>
+		<rmic classname="org.jboss.dtf.testframework.testnode.TaskId" base="${build}"/>
+		<rmic classname="org.jboss.dtf.testframework.coordinator2.Coordinator" base="${build}"/>
+		<rmic classname="org.jboss.dtf.testframework.coordinator2.scheduler.Scheduler" base="${build}"/>
+		<rmic classname="org.jboss.dtf.testframework.coordinator2.TaskDataHandler" base="${build}"/>
+		<rmic classname="org.jboss.dtf.testframework.productrepository.ProductRepository" base="${build}"/>
+		<rmic classname="org.jboss.dtf.testframework.utils.RemoteFileReader" base="${build}"/>
+
+	</target>
+
+	<target name="compile-prochandler">
+	<!--
+		<echo message="Compiling Linux process handler"/>
+
+		<exec dir="${prochandler}" executable="gcc">
+				<arg value="-olinuxprochandler"/>
+				<arg file="${prochandler}/src/LinuxProcessHandler.c"/>
+		</exec>
+	-->
+	</target>
+
+	<target name="compile-tools">
+		<echo message="Compiling tools"/>
+
+		<javac srcdir="${bin}"
+			destdir="${bin.build}"
+			debug="on">
+            <classpath>
+                <path refid="compile.classpath"/>
+                <pathelement location="${build}"/>
+            </classpath>
+       </javac>
+
+
+
+	</target>
+
+	<target name="compile-tests">
+
+		<!-- Compile the sample tests for DTF -->
+		<echo message="Compiling tests"/>
+
+		<javac srcdir="${tests.src}"
+			destdir="${tests.build}"
+			debug="on">
+            <classpath>
+                <path refid="compile.classpath"/>
+                <pathelement location="${build}"/>
+            </classpath>
+       </javac>
+
+	</target>
+
+	<!-- =========================================================================  -->
+	<!--  Documentation targets                                                     -->
+	<!-- =========================================================================  -->
+
+	<target name="docs" depends="create-javadocs, create-testdocs"/>
+
+	<target name="create-javadocs" depends="compile" if="build-docs">
+
+		<!-- Compile the TestFramework javadocs -->
+		<echo message="Compiling tests"/>
+
+		<javadoc sourcepath="${src}"
+			destdir="${docdest}"
+			packagenames="org.jboss.dtf.testframework.*"
+			classpath="${build}"/>
+
+	</target>
+
+	<target name="create-testdocs" depends="compile" if="build-docs">
+
+		<!-- Compile the sample test javadocs -->
+		<echo message="Compiling tests"/>
+
+		<javadoc sourcepath="${tests.src}"
+			packagenames="*"
+			failonerror="yes"
+			private="yes"
+			defaultexcludes="yes">
+
+			<doclet name="org.jboss.dtf.testframework.doclet.DTFDoclet">
+				<path>
+					<pathelement location="${dist}/lib/TestingFramework.jar"/>
+					<pathelement location="${lib}/xercesImpl.jar"/>
+					<pathelement location="${lib}/xml-apis.jar"/>
+				</path>
+				<param name="-module" value="DTFTests"/>
+			</doclet>
+		</javadoc>
+
+	</target>
+
+	<!-- =========================================================================  -->
+	<!--  Packaging targets                                                         -->
+	<!-- =========================================================================  -->
+
+	<target name="generate-war" depends="compile, docs">
+
+		<!-- Directory to store Tomcat 5 context -->
+		<mkdir dir="${war}/META-INF"/>
+
+		<mkdir dir="${war}/WEB-INF"/>
+		<mkdir dir="${war}/WEB-INF/lib"/>
+		<mkdir dir="${war}/WEB-INF/classes"/>
+
+		<!-- Create directories for storing user data -->
+		<mkdir dir="${war}/productinstallers"/>
+		<mkdir dir="${war}/productbuilds"/>
+		<mkdir dir="${war}/producttests"/>
+
+		<!-- Tomcat 5 context -->
+		<copy todir="${war}/META-INF">
+			<fileset dir="${xml}" includes="context.xml"/>
+		</copy>
+
+		<copy todir="${war}/WEB-INF/classes/">
+			<fileset dir="${build}"/>
+		</copy>
+
+		<copy todir="${war}/WEB-INF/">
+			<fileset dir="${xml}">
+				<include name="web.xml"/>
+			</fileset>
+		</copy>
+
+		<copy todir="${war}/WEB-INF/lib/">
+			<fileset dir="${lib}">
+				<include name="**/jdom.jar"/>
+                <include name="**/commons-fileupload-1.2.1.jar"/>
+                <include name="**/commons-io-1.3.2.jar"/>
+                <!--
+                <include name="**/mysql-connector-java-5.0.5-bin.jar"/>
+				<include name="**/struts.jar"/>
+				-->
+			</fileset>
+		</copy>
+
+		<copy todir="${war}/">
+			<fileset dir="${jsp}"/>
+		</copy>
+
+	</target>
+
+
+	<target name="dist" depends="compile, docs, generate-war">
+
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}"/>
+		<mkdir dir="${dist}/lib"/>
+		<mkdir dir="${dist}/lib/ext"/>
+		<mkdir dir="${dist}/tests"/>
+		<mkdir dir="${dist}/tests/products"/>
+		<mkdir dir="${dist}/bin"/>
+
+		<!-- copy the framework libraries -->
+		<jar jarfile="${dist}/lib/TestingFramework.jar" basedir="${build}"/>
+		<jar jarfile="${dist}/lib/DTFTools.jar" basedir="${bin.build}"/>
+
+		<!-- copy the external libraries -->
+		<copy todir="${dist}/lib/ext">
+			<fileset dir="${lib}" includes="*.jar"/>
+		</copy>
+
+		<!-- copy the binary executables -->
+		<copy todir="${dist}/bin">
+			<fileset dir="${prochandler}" includes="*"/>
+		</copy>
+
+		<!-- generate the war archive -->
+		<jar jarfile="${dist}/dtf.war" basedir="${war}"/>
+
+		<!-- copy the documentation files -->
+		<copy todir="${dist}/docs">
+			<fileset dir="${docdest}" includes="**/**"/>
+		</copy>
+
+		<!-- copy the process configuration files and directories -->
+		<copy todir="${dist}/testenv/">
+			<fileset dir="testenv" includes="**/**"/>
+		</copy>
+
+		<!-- startup scripts -->
+		<copy todir="${dist}/">
+			<fileset dir="${scripts}" includes="**/**"/>
+		</copy>
+
+		<!-- copy the tests -->
+		<jar jarfile="${dist}/lib/tests.jar" basedir="${tests.build}"/>
+
+		<!-- copy testing scripts -->
+		<copy todir="${dist}/tests">
+			<fileset dir="${tests.src}">
+				<include name="*.sh"/>
+				<include name="*.xml"/>
+			</fileset>
+		</copy>
+
+		<!-- sample products directory for tests -->
+		<copy todir="${dist}/tests/products">
+			<fileset dir="${tests.src}/products">
+				<include name="*.xml"/>
+			</fileset>
+		</copy>
+
+		<!-- sample product installers directory for tests -->
+		<copy todir="${dist}/tests/installers">
+			<fileset dir="${tests.src}/installers">
+				<include name="*.xml"/>
+			</fileset>
+		</copy>
+
+		<!-- sample testdefinitions directory for tests -->
+		<copy todir="${dist}/tests/testdefs">
+			<fileset dir="${tests.src}/testdefs">
+				<include name="*.xml"/>
+			</fileset>
+		</copy>
+
+		<!-- Create a sample product zip file -->
+		<zip zipfile="${dist}/tests/TestProduct.zip">
+			<zipfileset dir="${dist}/lib" includes="tests.jar"/>
+		</zip>
+
+		<!-- Create a zip file of the distribution for use with install.xml -->
+		<zip zipfile="${dist}/jbossdtf.zip">
+			<zipfileset dir="${dist}" includes="dtf.war,install.xml,setup-dtf.sh"/>
+			<zipfileset dir="${dist}/lib" prefix="lib"/>
+			<zipfileset dir="${dist}/bin" prefix="bin"/>
+			<zipfileset dir="${dist}/docs" prefix="docs"/>
+			<zipfileset dir="${dist}/testenv/coordinator" prefix="testenv/coordinator"/>
+			<zipfileset dir="${dist}/testenv/testnode1" prefix="testenv/testnode1"/>
+			<zipfileset dir="${dist}/testenv/services" prefix="testenv/services"/>
+			<zipfileset dir="${dist}/tests" prefix="tests"/>
+			<zipfileset dir="${dist}/tests/products" prefix="tests/products"/>
+		</zip>
+
+	</target>
+
+	<!-- =========================================================================  -->
+	<!--  Tidy up targets                                                           -->
+	<!-- =========================================================================  -->
+
+	<target name="clean">
+
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}"/>
+		<delete dir="${tests.build}"/>
+		<delete dir="${bin.build}"/>
+		<delete dir="${docdest}"/>
+		<delete dir="${war}"/>
+		<delete dir="${dist}"/>
+
+	</target>
+
+	<!-- =========================================================================  -->
+	<!--  Testing targets                                                           -->
+	<!-- =========================================================================  -->
+
+	<target name="deploy" depends="dist">
+
+		<echo message="Deploying Web Application to ${deploy-dir}/dtf"/>
+
+		<delete dir="${deploy-dir}/dtf"/>
+
+		<mkdir dir="${deploy-dir}/dtf"/>
+
+		<copy todir="${deploy-dir}/dtf/">
+			<fileset dir="${war}"/>
+		</copy>
+
+	</target>
+
+	<target name="updatenodes">
+
+		<echo message="Updating nodes"/>
+
+		<copy todir="${deploy-dir}/ROOT">
+			<fileset dir="${dist}/lib/" includes="*.jar"/>
+		</copy>
+
+		<taskdef name="deploy-software"
+			classname="org.jboss.dtf.testframework.anttasks.DeploySoftware"
+			classpath="${dist}/lib/TestingFramework.jar"/>
+
+		<deploy-software nameservice="//bob101/NameService"
+			product="FrameworkTests"
+			url="http://bob101:8080/install-frameworktests.xml"/>
+
+	</target>
+
+	<target name="test-junit">
+
+		<taskdef classname="org.jboss.dtf.tools.JUnitToTestDefinitions" classpath="./dist/lib/DTFTools.jar" name="junit-to-testdef"/>
+
+		<junit-to-testdef testdefs="output.xml">
+			<fileset dir="c:/jboss-3.2.0RC1-src/testsuite/output/classes/" includes="**/*.class"/>
+		</junit-to-testdef>
+
+	</target>
+
+	<target name="test-initiate">
+
+		<taskdef classname="org.jboss.dtf.tools.initiatetestrun.InitiateTestRun" classpath="./dist/lib/DTFTools.jar" name="initiate-test-run"/>
+
+		<initiate-test-run testdefsurl="http://bob101/blah.xml"
+			testselectionsurl="http://bob101/blee.xml"
+			nameserviceuri="//bob101:1094/NameService"
+			softwareversion="Blah"
+			runwhenpossible="true"
+			waittocomplete="true"/>
+
+	</target>
+
+	<target name="test-schedule">
+
+		<taskdef classname="org.jboss.dtf.tools.scheduletask.ScheduleTask" classpath="./dist/lib/DTFTools.jar" name="schedule"/>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+		<schedule nameserviceuri="//localhost/NameService">
+
+			<runwhenpossible>
+				<testrun testdefsurl="http://bob101/dtf-testdefs.xml"
+					testselectionsurl="http://bob101/3_OutputWin2K.xml"
+					softwareversion="ScheduleTest"/>
+			</runwhenpossible>
+
+		</schedule>
+
+	</target>
+
+</project>

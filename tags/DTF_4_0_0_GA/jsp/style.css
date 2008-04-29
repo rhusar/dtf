@@ -1,0 +1,54 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2008, Red Hat Middleware LLC, and individual contributors
+ * as indicated by the @author tags.
+ * See the copyright.txt in the distribution for a
+ * full listing of individual contributors.
+ * This copyrighted material is made available to anyone wishing to use,
+ * modify, copy, or redistribute it subject to the terms and conditions
+ * of the GNU Lesser General Public License, v. 2.1.
+ * This program is distributed in the hope that it will be useful, but WITHOUT A
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License,
+ * v.2.1 along with this distribution; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA  02110-1301, USA.
+ *
+ * (C) 2008,
+ * @author JBoss Inc.
+ */
+<style type="text/css">
+
+    foo.bar { font-family: Tahoma; font-size: 7pt; color: white; background-color: #666666 }
+
+    td.menu_background { background-color: #D9DBFF }
+    td.fancytable { font-family: Tahoma; font-size: 8pt; color: black; background-color: #BCBEFE }
+    td.fancytable_header { font-family: Tahoma; font-size: 8pt; color: black; background-color: #A0A2FE }
+    td.news_footer { font-family: Tahoma; font-size: 7pt; color: black }
+    td.header { font-family: Tahoma; font-size: 8pt; color: white; background-color: #666666 }
+    td.selected { font-family: Tahoma; font-size: 8pt; color: black; background-color: #DACFFF }
+    td.header2 { font-family: Tahoma; font-size: 8pt; color: white; background-color: #0000AA }
+    td.error { font-family: Tahoma; font-size: 8pt; color: red }
+    td.success { font-family: Tahoma; font-size: 8pt; color: green }
+    th { font-family: Tahoma; font-size: 8pt; color: white; font-style: bold; background-color: #AABBCC }
+
+    a { font-family: Tahoma; font-size: 8pt; color: black; text-decoration: none }
+    a.option { color: white }
+    a.selected { font-weight: bold; text-decoration: none }
+
+    a.option:link { color: white }  /* for unvisited links */
+    a.option:visited { color: white } /* for visited links */
+    a.option:active { color: white } /* when link is clicked */
+    a.option:hover { color: #909090 } /* when mouse is over link */
+
+    :link { color: #00006A }  /* for unvisited links */
+    :visited { color: #00006A } /* for visited links */
+    :active { color: #00006A } /* when link is clicked */
+    :hover { color: #909090 } /* when mouse is over link */
+
+    td { font-family: Tahoma; font-size: 8pt; color: black }
+    h2 { font-family: Tahoma; font-size: 10pt; font-style: bold; color: black; margin-bottom: 0em }
+
+</style>
+

@@ -1,0 +1,202 @@
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<service_manager xmlns:xsi="http:/www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./dtf-servicemanager.xsd">
+
+	<!-- Configure NameService -->
+	<service name="Name Service" class="org.jboss.dtf.testframework.nameservice.NameService" timeout="45">
+
+		<classpath>
+			<!-- NameService requires use of TestingFramework classes -->
+			<directory name="."/>
+			<jar name="../../lib/TestingFramework.jar"/>
+            <jar name="../../lib/ext/jdom.jar"/>
+        </classpath>
+
+		<properties>
+			<!-- set the RMI port number (default is 1099) -->
+			<property name="rmi.port" value="1099"/>
+		</properties>
+
+	</service>
+
+	<!-- Configure Product Repository -->
+	<service name="Product Repository" class="org.jboss.dtf.testframework.productrepository.ProductRepository" timeout="45">
+
+		<classpath>
+			<!-- ProductRepository requires use of TestingFramework classes -->
+			<directory name="."/>
+			<jar name="../../lib/TestingFramework.jar"/>
+
+			<!-- ProductRepository needs to parse XML product descriptions -->
+			<jar name="../../lib/ext/jdom.jar"/>
+			<!-- <jar name="../../lib/ext/xerces.jar"/> -->
+		</classpath>
+
+		<parameters>
+			<param>-nameservice</param>
+			<param>//localhost:1099/NameService</param>
+		</parameters>
+
+		<properties>
+			<!-- set the RMI port number (default is 1099) -->
+			<property name="rmi.port" value="1099"/>
+		</properties>
+
+	</service>
+
+	<!-- Configure ServiceRegister -->
+	<service name="Service Register" class="org.jboss.dtf.testframework.serviceregister.ServiceRegister" timeout="45">
+
+		<classpath>
+			<!-- ServiceRegister requires use of TestingFramework classes -->
+			<directory name="."/>
+			<jar name="../../lib/TestingFramework.jar"/>
+		</classpath>
+
+		<parameters>
+			<param>-nameservice</param>
+			<param>//localhost:1099/NameService</param>
+		</parameters>
+
+		<properties>
+			<!-- set the RMI port number (default is 1099) -->
+			<property name="rmi.port" value="1099"/>
+		</properties>
+
+	</service>
+
+	<!-- Configure DBManager -->
+	<service name="DBManager" class="org.jboss.dtf.testframework.dbmanager.DBManager" timeout="45">
+
+		<classpath>
+			<!-- DBManager requires use of TestingFramework classes -->
+			<directory name="."/>
+			<jar name="../../lib/TestingFramework.jar"/>
+
+			<!-- DBManager needs to use the filesystem as a JNDI name service -->
+			<jar name="../../lib/ext/providerutil.jar"/>
+			<jar name="../../lib/ext/fscontext.jar"/>
+
+			<!-- DBManager needs to parse XML product descriptions -->
+			<jar name="../../lib/ext/jdom.jar"/>
+
+
+            <!-- <jar name="../../lib/ext/xerces.jar"/> -->
+
+			<!-- DBManager needs JDBC access to a MySQL database -->
+			<!-- <jar name="../../lib/ext/jdbc2_0-stdext.jar"/> -->
+			<jar name="../../lib/ext/mysql-connector-java-5.1.6-bin.jar"/>
+		</classpath>
+
+		<parameters>
+			<!-- DBManager needs to set up a connection to an existing MySQL database -->
+			<param>-plugin</param>
+			<param>org.jboss.dtf.testframework.dbmanager.plugins.MySQL</param>
+			<param>-url</param>
+			<param>localhost:3306:dtf</param>
+			<param>-username</param>
+			<param>dtfuser</param>
+			<param>-password</param>
+			<param>dtfuser</param>
+		</parameters>
+
+		<properties>
+			<!-- JNDI is used as a naming service to store name-to-object bindings         -->
+			<!-- The naming service is implemented by the filesystem, and the root context -->
+			<!-- is located at file:/jndi                                                  -->
+			<property name="java.naming.factory.initial" value="com.sun.jndi.fscontext.RefFSContextFactory"/>
+			<property name="java.naming.provider.url" value="file:./jndiFSContext"/>
+
+			<!-- set the RMI port number (default is 1099) -->
+			<property name="rmi.port" value="1099"/>
+		</properties>
+	</service>
+
+	<!-- Configure ResultsCollator -->
+	<service name="Results Collator" class="org.jboss.dtf.testframework.coordinator.resultscollator.ResultsCollator" timeout="45">
+		<classpath>
+			<!-- ResultsCollator requires use of TestingFramework classes -->
+			<directory name="."/>
+			<jar name="../../lib/TestingFramework.jar"/>
+
+			<!-- ResultsCollator needs to use the filesystem as a JNDI name service -->
+			<jar name="../../lib/ext/providerutil.jar"/>
+			<jar name="../../lib/ext/fscontext.jar"/>
+
+			<!-- ResultsCollator needs to parse XML product descriptions -->
+			<jar name="../../lib/ext/jdom.jar"/>
+
+            <!-- <jar name="../../lib/ext/xerces.jar"/> -->
+
+			<!-- ResultsCollator needs to commun icate with the MySQL dtf database -->
+			<!-- <jar name="../../lib/ext/jdbc2_0-stdext.jar"/> -->
+			<jar name="../../lib/ext/mysql-connector-java-5.1.6-bin.jar"/>
+
+			<!-- The ZIP file plugin -->
+			<!-- <jar name="../../lib/AMSPlugin.jar"/> -->
+		</classpath>
+
+		<settings>
+			<!-- JVM settings for remote debugging
+			<setting>-Xdebug</setting>
+			<setting>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=1044</setting>
+			-->
+		</settings>
+
+		<parameters>
+			<!-- Specify directory to hold results -->
+			<param>-dir</param>
+			<param>./ResultsCollatorTempResults/</param>
+
+			<!-- Plugins used to process raw results received from TestNodes -->
+
+			<!-- DatabaseResultsCollator used to write results to database -->
+			<param>-plugin</param>
+			<param>org.jboss.dtf.testframework.coordinator.resultscollator.DatabaseResultsCollator</param>
+
+			<!-- PerformanceResultsCollator processes performance testing results
+			<param>-plugin</param>
+			<param>org.jboss.dtf.testframework.coordinator.resultscollator.PerformanceResultsCollator</param>
+			-->
+
+			<!-- ZipFileResultsCollator writes results to zip file
+			<param>-plugin</param>
+			<param>org.jboss.dtf.dtftestss.dtf.ZIPFileResultsCollator</param>
+			-->
+
+		</parameters>
+		<properties>
+			<!-- JNDI is used as a naming service to store name-to-object bindings         -->
+			<!-- The naming service is implemented by the filesystem, and the root context -->
+			<!-- is located at file:/jndi                                                  -->
+			<property name="java.naming.factory.initial" value="com.sun.jndi.fscontext.RefFSContextFactory"/>
+			<property name="java.naming.provider.url" value="file:./jndiFSContext"/>
+
+			<!-- set the RMI port number (default is 1099) -->
+			<property name="rmi.port" value="1099"/>
+
+			<!-- The ZIPFileResultsCollator needs to know where Tomcat resides
+			<property name="org.jboss.dtf.dtftestss.dtf.ZIPFileResultsCollator.tomcat" value="/usr/share/tomcat5"/>
+			-->
+
+		</properties>
+	</service>
+</service_manager>

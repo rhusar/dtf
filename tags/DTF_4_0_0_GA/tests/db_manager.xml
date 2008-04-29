@@ -1,0 +1,69 @@
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<service_manager xmlns:xsi="http:/www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./dtf-servicemanager.xsd">
+
+	<!-- Configure DBManager -->
+	<service name="DBManager" class="org.jboss.dtf.testframework.dbmanager.DBManager" timeout="45">
+
+		<classpath>
+			<!-- DBManager requires use of TestingFramework classes -->
+			<directory name="."/>
+			<jar name="../lib/TestingFramework.jar"/>
+
+			<!-- DBManager needs to parse XML product descriptions -->
+			<jar name="../lib/ext/jdom.jar"/>
+
+            <!-- <jar name="../lib/ext/xerces.jar"/> -->
+
+			<!-- DBManager needs to use the filesystem as a JNDI nameservice -->
+			<jar name="../lib/ext/providerutil.jar"/>
+			<jar name="../lib/ext/fscontext.jar"/>
+
+			<!-- DBManager needs JDBC access to a MySQL database -->
+			<!-- <jar name="../lib/ext/jdbc2_0-stdext.jar"/> -->
+			<jar name="../lib/ext/mysql-connector-java-5.1.6-bin.jar"/>
+		</classpath>
+
+		<parameters>
+			<!-- DBManager needs to set up a connection to an existing MySQL database -->
+			<param>-plugin</param>
+			<param>org.jboss.dtf.testframework.dbmanager.plugins.MySQL</param>
+			<param>-url</param>
+			<param>localhost:3306:dtf</param>
+			<param>-username</param>
+			<param>dtfuser</param>
+			<param>-password</param>
+			<param>dtfuser</param>
+		</parameters>
+
+		<properties>
+			<!-- JNDI is used as a naming service to store name-to-object bindings         -->
+			<!-- The naming service is implemented by the filesystem, and the root context -->
+			<!-- is located at file:/jndi                                                  -->
+			<property name="java.naming.factory.initial" value="com.sun.jndi.fscontext.RefFSContextFactory"/>
+			<property name="java.naming.provider.url" value="file:./jndiFSContext"/>
+
+			<!-- set the RMI port number (default is 1099) -->
+			<property name="rmi.port" value="1099"/>
+		</properties>
+	</service>
+
+</service_manager>

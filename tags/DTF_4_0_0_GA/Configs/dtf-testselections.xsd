@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright 2008, Red Hat Middleware LLC, and individual contributors
+  as indicated by the @author tags.
+  See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+  This copyrighted material is made available to anyone wishing to use,
+  modify, copy, or redistribute it subject to the terms and conditions
+  of the GNU Lesser General Public License, v. 2.1.
+  This program is distributed in the hope that it will be useful, but WITHOUT A
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+  You should have received a copy of the GNU Lesser General Public License,
+  v.2.1 along with this distribution; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  MA  02110-1301, USA.
+
+  (C) 2008,
+  @author JBoss Inc.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="orb">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="testGroup" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="Java"/>
+						<xs:enumeration value="Orbix"/>
+						<xs:enumeration value="Visibroker"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="os">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="orb" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="CYGWIN_NT-4.0"/>
+						<xs:enumeration value="CYGWIN_NT-5.0"/>
+						<xs:enumeration value="HP-UX"/>
+						<xs:enumeration value="Linux"/>
+						<xs:enumeration value="SunOS"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="test">
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="selected" type="xs:boolean" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="testGroup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="test" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="AITTests"/>
+						<xs:enumeration value="Arjuna"/>
+						<xs:enumeration value="ArjunaNesting"/>
+						<xs:enumeration value="Asynchronous"/>
+						<xs:enumeration value="Basic"/>
+						<xs:enumeration value="Checked"/>
+						<xs:enumeration value="Current"/>
+						<xs:enumeration value="DistributedHammerTests"/>
+						<xs:enumeration value="DumpRunInformation"/>
+						<xs:enumeration value="ExplicitInterposition"/>
+						<xs:enumeration value="Hammer"/>
+						<xs:enumeration value="Heuristics"/>
+						<xs:enumeration value="Implicit"/>
+						<xs:enumeration value="Interposition"/>
+						<xs:enumeration value="JDBC-cloudscape"/>
+						<xs:enumeration value="JDBC2-cloudscape"/>
+						<xs:enumeration value="JDBC2-oracle"/>
+						<xs:enumeration value="JTA"/>
+						<xs:enumeration value="JTAHammer"/>
+						<xs:enumeration value="Local"/>
+						<xs:enumeration value="Nested"/>
+						<xs:enumeration value="Performance"/>
+						<xs:enumeration value="Synchronizations"/>
+						<xs:enumeration value="Timeout"/>
+						<xs:enumeration value="TransactionServer"/>
+						<xs:enumeration value="Transactions"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="test_selection">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="os" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
