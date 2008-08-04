@@ -41,9 +41,6 @@ import java.util.Hashtable;
 public class JavaTaskRunner extends TaskRunner
 {
 	private final static String RESULTS_DIRECTORY_PROPERTY = "org.jboss.dtf.testframework.testnode.UnitTestTaskRunner.resultsdirectory";
-    private final static String JAVA_TASK_RUNNER_DEBUG_PROPERTY = "com.arjuna.mw.testframework.javataskrunner.debug";
-
-    protected static boolean        DebugEnabled = Boolean.valueOf( System.getProperty(JAVA_TASK_RUNNER_DEBUG_PROPERTY, "false") ).booleanValue();
 
     private final static String WAIT_FOR_PARAMETER = "wait_for_text";
     private final static String PASS_INDICATOR_PARAMETER = "pass_indicator";

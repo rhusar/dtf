@@ -46,8 +46,10 @@ import java.io.File;
 public abstract class TaskRunner implements Runnable
 {
 	public final static String JAVA_HOME_DIRECTORY_PARAMETER = "java_home";
+    private final static String JAVA_TASK_RUNNER_DEBUG_PROPERTY = "com.arjuna.mw.testframework.javataskrunner.debug";
+    protected static boolean        DebugEnabled = Boolean.valueOf( System.getProperty(JAVA_TASK_RUNNER_DEBUG_PROPERTY, "false") ).booleanValue();
 
-	protected String  				_className;
+    protected String  				_className;
 	protected String[] 				_parameters;
 	protected String[]				_jvmParameters;
 	protected int    				_testType = TestNodeInterface.WAIT_NONE,
