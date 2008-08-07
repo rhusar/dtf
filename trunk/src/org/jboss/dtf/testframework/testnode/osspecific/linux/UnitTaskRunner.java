@@ -83,7 +83,7 @@ public class UnitTaskRunner extends TaskRunner
 			File javaBinDir = new File(_javaHome, "bin");
 			File javaExe = new File(javaBinDir, "java");
 
-			NodeConfiguration nodeConfig = _productConfig.getNodeConfiguration(TestNode.getOSId());
+			NodeConfiguration nodeConfig = _productConfig.getNodeConfiguration(_nodeConfig.getOs()); // TestNode.getOSId()
 			StringPreprocessor pre = new StringPreprocessor();
 			pre.addReplacements(nodeConfig.getPreprocessedSets());
 

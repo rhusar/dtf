@@ -191,7 +191,8 @@ public class TestManager extends Thread
 		catch (Exception e)
 		{
 			_logger.error("ERROR - Failed to initialise test with web logging service:"+e);
-			_failed = true;
+            e.printStackTrace();
+            _failed = true;
 		}
 
 		if ( !_failed )
