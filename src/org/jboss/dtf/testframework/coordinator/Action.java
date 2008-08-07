@@ -103,7 +103,7 @@ public abstract class Action
 	 */
 	public final int getLocationType() throws NoAssociatedData
 	{
-	    int returnValue = LOCATION_DEPENDENT;
+	    int returnValue = LOCATION_INDEPENDENT; // was LOCATION_DEPENDENT
 
         String location = getLocation();
 

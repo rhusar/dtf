@@ -296,7 +296,11 @@ public class TestDefinition
 			}
 		}
 
-		return nodesRequired;
+        if(nodesRequired == 0) {
+            nodesRequired = 1; // all tasks are flexible so can share a node.
+        }
+
+        return nodesRequired;
 	}
 
 	public void addOSProduct(OSProductCombination p)
