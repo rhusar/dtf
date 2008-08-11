@@ -30,6 +30,7 @@ import org.jboss.dtf.testframework.coordinator.*;
 
 import java.net.URL;
 import java.util.*;
+import java.io.File;
 
 /**
  * A simple DTF test coordinator designed to run DTF tests without requiring a web server, database or
@@ -88,10 +89,10 @@ public class LocalTestManager
     }
 
     public static LocalTestManager getInstance(String testdefsFile, String productConfigFile, String testnodeConfigFile) throws Exception {
-        TestDefinitionRepository testDefinitionRepository = new TestDefinitionRepository(new URL("file://"+testdefsFile));
-        TaskDefinitionRepository taskDefinitionRepository = new TaskDefinitionRepository(new URL("file://"+testdefsFile));
+        TestDefinitionRepository testDefinitionRepository = new TestDefinitionRepository(new URL("file://"+(new File(testdefsFile).getAbsolutePath())));
+        TaskDefinitionRepository taskDefinitionRepository = new TaskDefinitionRepository(new URL("file://"+(new File(testdefsFile).getAbsolutePath())));
 
-        return new LocalTestManager(testDefinitionRepository, taskDefinitionRepository, productConfigFile, "file://"+testnodeConfigFile);
+        return new LocalTestManager(testDefinitionRepository, taskDefinitionRepository, productConfigFile, "file://"+(new File(testnodeConfigFile).getAbsolutePath()));
     }
 
     public LocalTestManager(TestDefinitionRepository testDefinitionRepository, TaskDefinitionRepository taskDefinitionRepository,
