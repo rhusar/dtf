@@ -27,8 +27,8 @@
 			<!-- NameService requires use of TestingFramework classes -->
 			<directory name="."/>
 			<jar name="../../lib/TestingFramework.jar"/>
-            <jar name="../../lib/ext/jdom.jar"/>
-        </classpath>
+			<jar name="../../lib/ext/jdom.jar"/>
+		</classpath>
 
 		<properties>
 			<!-- set the RMI port number (default is 1099) -->
@@ -47,7 +47,7 @@
 
 			<!-- ProductRepository needs to parse XML product descriptions -->
 			<jar name="../../lib/ext/jdom.jar"/>
-			<!-- <jar name="../../lib/ext/xerces.jar"/> -->
+			<jar name="../../lib/ext/xerces.jar"/>
 		</classpath>
 
 		<parameters>
@@ -97,12 +97,10 @@
 
 			<!-- DBManager needs to parse XML product descriptions -->
 			<jar name="../../lib/ext/jdom.jar"/>
-
-
-            <!-- <jar name="../../lib/ext/xerces.jar"/> -->
+			<jar name="../../lib/ext/xerces.jar"/>
 
 			<!-- DBManager needs JDBC access to a MySQL database -->
-			<!-- <jar name="../../lib/ext/jdbc2_0-stdext.jar"/> -->
+			<jar name="../../lib/ext/jdbc2_0-stdext.jar"/>
 			<jar name="../../lib/ext/mysql-connector-java-5.1.6-bin.jar"/>
 		</classpath>
 
@@ -143,11 +141,10 @@
 
 			<!-- ResultsCollator needs to parse XML product descriptions -->
 			<jar name="../../lib/ext/jdom.jar"/>
-
-            <!-- <jar name="../../lib/ext/xerces.jar"/> -->
+			<jar name="../../lib/ext/xerces.jar"/>
 
 			<!-- ResultsCollator needs to commun icate with the MySQL dtf database -->
-			<!-- <jar name="../../lib/ext/jdbc2_0-stdext.jar"/> -->
+			<jar name="../../lib/ext/jdbc2_0-stdext.jar"/>
 			<jar name="../../lib/ext/mysql-connector-java-5.1.6-bin.jar"/>
 
 			<!-- The ZIP file plugin -->

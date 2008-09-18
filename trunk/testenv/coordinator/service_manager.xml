@@ -28,11 +28,10 @@
 
 			<!-- Coordinator needs to parse XML descriptiors -->
 			<jar name="../../lib/ext/jdom.jar"/>
-
-            <!-- <jar name="../../lib/ext/xerces.jar"/> -->
+			<jar name="../../lib/ext/xerces.jar"/>
 
 			<!-- Coordinator needs commons-logging -->
-			<!-- <jar name="../../lib/ext/commons-logging.jar"/> -->
+			<jar name="../../lib/ext/commons-logging.jar"/>
 			<jar name="../../lib/ext/log4j-1.2.15.jar"/>
 		</classpath>
 
