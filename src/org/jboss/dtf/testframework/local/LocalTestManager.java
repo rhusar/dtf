@@ -89,10 +89,21 @@ public class LocalTestManager
     }
 
     public static LocalTestManager getInstance(String testdefsFile, String productConfigFile, String testnodeConfigFile) throws Exception {
-        TestDefinitionRepository testDefinitionRepository = new TestDefinitionRepository(new URL("file://"+(new File(testdefsFile).getAbsolutePath())));
-        TaskDefinitionRepository taskDefinitionRepository = new TaskDefinitionRepository(new URL("file://"+(new File(testdefsFile).getAbsolutePath())));
 
-        return new LocalTestManager(testDefinitionRepository, taskDefinitionRepository, productConfigFile, "file://"+(new File(testnodeConfigFile).getAbsolutePath()));
+        String prefix = "file://";
+        if(File.separatorChar == '\\') {
+            // we are on a windows box. this is a pain.
+            prefix = "file:/"; // if we use "//" it treats the drive letter as a host.
+            // it's really up to the user to fix the seps in the path, but we'll do it just in case...
+            testdefsFile = testdefsFile.replace('/', File.separatorChar);
+            productConfigFile = productConfigFile.replace('/', File.separatorChar);
+            testnodeConfigFile = testnodeConfigFile.replace('/', File.separatorChar);
+        }
+
+        TestDefinitionRepository testDefinitionRepository = new TestDefinitionRepository(new URL(prefix+(new File(testdefsFile).getAbsolutePath())));
+        TaskDefinitionRepository taskDefinitionRepository = new TaskDefinitionRepository(new URL(prefix+(new File(testdefsFile).getAbsolutePath())));
+
+        return new LocalTestManager(testDefinitionRepository, taskDefinitionRepository, productConfigFile, prefix+(new File(testnodeConfigFile).getAbsolutePath()));
     }
 
     public LocalTestManager(TestDefinitionRepository testDefinitionRepository, TaskDefinitionRepository taskDefinitionRepository,
